@@ -1,0 +1,38 @@
+class Solution {
+public:
+    // Helper function to check if a substring is a palindrome
+    bool Palindrome(string &s, int i, int j) {
+        while (i < j) {
+            if (s[i] != s[j]) {
+                return false;  // If characters at i and j don't match, it's not a palindrome
+            }
+            i++;  // Move i forward
+            j--;  // Move j backward
+        }
+        return true;  // If loop completes, it's a palindrome
+    }
+
+    // Function to find the longest palindromic substring
+    string longestPalindrome(string s) {
+        int n = s.length();
+        if (n == 0) return "";  // If string is empty, return empty string
+
+        int maxLength = 0;  // Variable to track the length of the longest palindrome found
+        int start = 0;  // Variable to track the starting index of the longest palindrome
+
+        // Brute force approach to check all possible substrings
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < n; ++j) {
+                if (Palindrome(s, i, j)) {  // Check if the substring from i to j is a palindrome
+                    int len = j - i + 1;  // Calculate the length of the current palindrome
+                    if (len > maxLength) {  // If it's longer than the current longest, update maxLength and start
+                        maxLength = len;
+                        start = i;
+                    }
+                }
+            }
+        }
+
+        return s.substr(start, maxLength);  // Return the longest palindromic substring
+    }
+};
