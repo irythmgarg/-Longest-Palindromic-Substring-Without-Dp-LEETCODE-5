@@ -1,0 +1,42 @@
+Explanation:
+Palindrome Helper Function:
+
+This function checks if a given substring of s (from index i to j) is a palindrome.
+It uses a two-pointer technique, where i starts from the beginning of the substring and j starts from the end.
+If at any point the characters s[i] and s[j] don't match, it returns false. Otherwise, it continues to move i forward and j backward until they cross each other.
+If the loop completes, the substring is a palindrome, and the function returns true.
+Main Function:
+
+The function longestPalindrome finds the longest palindromic substring by iterating through all possible substrings of s (using two nested loops).
+For each substring defined by indices i and j, it checks if the substring is a palindrome using the Palindrome helper function.
+If it finds a palindrome and its length is greater than the current maxLength, it updates maxLength and the start index.
+Finally, the function returns the longest palindromic substring using substr(start, maxLength).
+Time Complexity:
+Outer Loop (i):
+
+The outer loop runs n times, where n is the length of the string s.
+Inner Loop (j):
+
+The inner loop runs from i to n, so for each value of i, the number of iterations of j is (n - i).
+Palindrome Check:
+
+The Palindrome function checks if a substring from i to j is a palindrome. In the worst case, it compares each pair of characters in the substring, which takes O(n) time.
+Overall Time Complexity:
+
+The time complexity for checking each substring is O(n), and the number of substrings is O(n^2) (due to the nested loops).
+Therefore, the overall time complexity of the solution is O(n^3), where n is the length of the string.
+Space Complexity:
+Auxiliary Space:
+
+The space complexity is mainly determined by the space used by the Palindrome function for checking substrings.
+The function uses only a few variables (i and j) and does not allocate extra space proportional to the input size.
+Hence, the auxiliary space complexity is O(1).
+Final Space Complexity:
+
+The space complexity is O(1) as no extra space is used for storing results other than variables for indices and substring lengths.
+Optimizing Time Complexity:
+This approach has a cubic time complexity due to checking all substrings. There are more efficient algorithms to solve the longest palindromic substring problem:
+
+Dynamic Programming: This can reduce the time complexity to O(n^2).
+Expand Around Center: This can reduce the time complexity to O(n^2) and space complexity to O(1).
+Manacher’s Algorithm: This can solve the problem in O(n) time.
